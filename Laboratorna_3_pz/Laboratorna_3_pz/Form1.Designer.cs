@@ -58,7 +58,7 @@
             this.final_price_text = new System.Windows.Forms.Label();
             this.product_number_buy = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.buy_button = new System.Windows.Forms.Button();
+            this.buy_all = new System.Windows.Forms.Button();
             this.update_product_buy = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -301,9 +301,9 @@
             this.final_price_text.AutoSize = true;
             this.final_price_text.Location = new System.Drawing.Point(331, 563);
             this.final_price_text.Name = "final_price_text";
-            this.final_price_text.Size = new System.Drawing.Size(113, 20);
+            this.final_price_text.Size = new System.Drawing.Size(125, 20);
             this.final_price_text.TabIndex = 38;
-            this.final_price_text.Text = "Загальна ціна :";
+            this.final_price_text.Text = "Загальна ціна : 0";
             // 
             // product_number_buy
             // 
@@ -321,15 +321,15 @@
             this.label13.TabIndex = 39;
             this.label13.Text = "Кількість";
             // 
-            // buy_button
+            // buy_all
             // 
-            this.buy_button.Location = new System.Drawing.Point(331, 620);
-            this.buy_button.Name = "buy_button";
-            this.buy_button.Size = new System.Drawing.Size(150, 51);
-            this.buy_button.TabIndex = 41;
-            this.buy_button.Text = "Оплатити товар з кошику ";
-            this.buy_button.UseVisualStyleBackColor = true;
-            this.buy_button.Click += new System.EventHandler(this.buy_button_Click);
+            this.buy_all.Location = new System.Drawing.Point(331, 620);
+            this.buy_all.Name = "buy_all";
+            this.buy_all.Size = new System.Drawing.Size(150, 51);
+            this.buy_all.TabIndex = 41;
+            this.buy_all.Text = "Оплатити товар з кошику ";
+            this.buy_all.UseVisualStyleBackColor = true;
+            this.buy_all.Click += new System.EventHandler(this.buy_all_Click);
             // 
             // update_product_buy
             // 
@@ -347,7 +347,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1501, 692);
             this.Controls.Add(this.update_product_buy);
-            this.Controls.Add(this.buy_button);
+            this.Controls.Add(this.buy_all);
             this.Controls.Add(this.product_number_buy);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.final_price_text);
@@ -418,7 +418,7 @@
         private Label final_price_text;
         private TextBox product_number_buy;
         private Label label13;
-        private Button buy_button;
+        private Button buy_all;
         private Button update_product_buy;
     }
 }

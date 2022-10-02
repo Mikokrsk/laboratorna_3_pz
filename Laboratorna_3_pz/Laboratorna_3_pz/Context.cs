@@ -12,6 +12,7 @@ namespace Laboratorna_3_pz
     {
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Basket> Products_in_Basket { get; set; }
 
         public string DbPath { get; set; }  
         
