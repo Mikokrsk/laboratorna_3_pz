@@ -222,9 +222,15 @@ namespace Laboratorna_3_pz
             {
                 basket.Items.Add(item.Id + " --- " + item.Product_Name + " --- " + item.Product_Provider
                      + " --- " + item.Product_Number + " --- " + item.Product_Price + " загалом " + item.Product_Number*item.Product_Price);
-                final_price +=(item.Product_Number * item.Product_Price);
+                final_price += calculate(item.Product_Number , item.Product_Price);
+
             }
             final_price_text.Text = $"Загальна ціна : {final_price}";
+        }
+
+       public int calculate_total_sum(int product_num , int product_price)
+        {
+            return product_num*product_price;
         }
 
         private void update_product_buy_Click(object sender, EventArgs e)
