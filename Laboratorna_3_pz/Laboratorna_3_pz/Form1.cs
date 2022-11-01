@@ -1,13 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+
 namespace Laboratorna_3_pz
 {
     public partial class Form1 : Form
     {
         public int final_price = 0 ;
 
-        public Form1()
+        public  Form1()
         {
             InitializeComponent();
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -19,8 +32,8 @@ namespace Laboratorna_3_pz
             update_list_basket();
 
         }
-        //
-        private void update_list_product()
+       
+        public void update_list_product()
         {
             list_product.Items.Clear();
             using var db = new Context();
@@ -272,20 +285,37 @@ namespace Laboratorna_3_pz
 
         private void buy_all_Click(object sender, EventArgs e)
         {
+
+            if(final_price > 0)
+            {
+            var form = new Form2();
+            form.ShowDialog();
+           // buy();
+       //     basket.Items.Clear();
+                update_list_product();
+            }
+            else
+            {
+                MessageBox.Show("Кошик пустий");
+            }
+
+        }
+
+        public void buy()
+        {
+
             using var db = new Context();
             foreach (var item in db.Products_in_Basket)
             {
 
-                 var product =  db.Products.Find(item.Id);
-                    product.Product_Number -= item.Product_Number;
-                    db.Update(product);
-                    db.SaveChanges();
-                   update_list_product();
+                var product = db.Products.Find(item.Id);
+                product.Product_Number -= item.Product_Number;
+                db.Update(product);
+                db.SaveChanges();
+                update_list_product();
 
-              }
-
-            MessageBox.Show($"До сплати : {final_price} грн" );
-            MessageBox.Show($"Дякуємо за покупку");
+            }
+            update_list_product();
         }
 
     }
