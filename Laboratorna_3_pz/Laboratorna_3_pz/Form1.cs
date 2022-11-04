@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +14,11 @@ namespace Laboratorna_3_pz
 {
     public partial class Form1 : Form
     {
-        public int final_price = 0 ;
 
         public  Form1()
         {
             InitializeComponent();
         }
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -78,7 +76,7 @@ namespace Laboratorna_3_pz
             }
             catch
             {
-                MessageBox.Show("ÕÂ Ô‡‚ËÎ¸ÌÓ Á‡ÔÓ‚ÌÂÌ≥ ÔÓÎˇ");
+                MessageBox.Show("–ù–µ –ø—Ä–∞–≤–∏–ª—å–Ω–æ –∑–∞–ø–æ–≤–Ω–µ–Ω—ñ –ø–æ–ª—è");
             }
 
         }
@@ -145,14 +143,10 @@ namespace Laboratorna_3_pz
                     MessageBox.Show("no");
                 }
 
-
-                //db.Update(product);
-                //db.SaveChanges();
-                //update_list_product();
             }
             catch
             {
-                MessageBox.Show("ÕÂ Ô‡‚ËÎ¸ÌÓ Á‡ÔÓ‚ÌÂÌ≥ ÔÓÎˇ");
+                MessageBox.Show("–ù–µ –ø—Ä–∞–≤–∏–ª—å–Ω–æ –∑–∞–ø–æ–≤–Ω–µ–Ω—ñ –ø–æ–ª—è");
             }
         }
 
@@ -167,7 +161,7 @@ namespace Laboratorna_3_pz
             }
             catch
             {
-                MessageBox.Show("ÕÂ Ô‡‚ËÎ¸ÌÓ Á‡ÔÓ‚ÌÂÌ≥ ÔÓÎˇ");
+                MessageBox.Show("–ù–µ –ø—Ä–∞–≤–∏–ª—å–Ω–æ –∑–∞–ø–æ–≤–Ω–µ–Ω—ñ –ø–æ–ª—è");
             }
         }
        
@@ -201,13 +195,13 @@ namespace Laboratorna_3_pz
                 }
                 catch
                 {
-                    MessageBox.Show($"Õ‡ ÒÍÎ‡‰≥ ÌÂ Ï‡∫ {basket.Product_Number} , {basket.Product_Name}"); ;
+                    MessageBox.Show($"–ù–∞ —Å–∫–ª–∞–¥—ñ –Ω–µ –º–∞—î {basket.Product_Number} , {basket.Product_Name}"); ;
                 }
 
             }
             catch
             {
-                MessageBox.Show("ÕÂ Ô‡‚ËÎ¸ÌÓ Á‡ÔÓ‚ÌÂÌ≥ ÔÓÎˇ");
+                MessageBox.Show("–ù–µ –ø—Ä–∞–≤–∏–ª—å–Ω–æ –∑–∞–ø–æ–≤–Ω–µ–Ω—ñ –ø–æ–ª—è");
             }
 
 
@@ -216,19 +210,20 @@ namespace Laboratorna_3_pz
         private void update_list_basket()
         {
             basket.Items.Clear();
-            final_price = 0;
+            var singleton = Singleton.GetInstance();
+
             using var db = new Context();
             foreach (var item in db.Products_in_Basket)
             {
                 basket.Items.Add(item.Id + " --- " + item.Product_Name + " --- " + item.Product_Provider
-                     + " --- " + item.Product_Number + " --- " + item.Product_Price + " Á‡„‡ÎÓÏ " + item.Product_Number*item.Product_Price);
-                final_price += calculate(item.Product_Number , item.Product_Price);
+                     + " --- " + item.Product_Number + " --- " + item.Product_Price + " –∑–∞–≥–∞–ª–æ–º " + item.Product_Number*item.Product_Price);
+                singleton.final_price += calculate_total_sum(item.Product_Number , item.Product_Price);
 
             }
-            final_price_text.Text = $"«‡„‡Î¸Ì‡ ˆ≥Ì‡ : {final_price}";
+            final_price_text.Text = $"–ó–∞–≥–∞–ª—å–Ω–∞ —Ü—ñ–Ω–∞ : {singleton.final_price}";
         }
 
-       public int calculate_total_sum(int product_num , int product_price)
+        public int calculate_total_sum(int product_num , int product_price)
         {
             return product_num*product_price;
         }
@@ -263,14 +258,14 @@ namespace Laboratorna_3_pz
                 }
                 catch
                 {
-                    MessageBox.Show($"Õ‡ ÒÍÎ‡‰≥ ÌÂ Ï‡∫ {basket.Product_Number} , {basket.Product_Name}"); ;
+                    MessageBox.Show($"–ù–∞ —Å–∫–ª–∞–¥—ñ –Ω–µ –º–∞—î {basket.Product_Number} , {basket.Product_Name}"); ;
                 }
 
 
             }
             catch
             {
-                MessageBox.Show("ÕÂ Ô‡‚ËÎ¸ÌÓ Á‡ÔÓ‚ÌÂÌ≥ ÔÓÎˇ");
+                MessageBox.Show("–ù–µ –ø—Ä–∞–≤–∏–ª—å–Ω–æ –∑–∞–ø–æ–≤–Ω–µ–Ω—ñ –ø–æ–ª—è");
             }
         }
 
@@ -285,44 +280,105 @@ namespace Laboratorna_3_pz
             }
             catch
             {
-                    MessageBox.Show("ÕÂ Ô‡‚ËÎ¸ÌÓ Á‡ÔÓ‚ÌÂÌ≥ ÔÓÎˇ");
+                    MessageBox.Show("–ù–µ –ø—Ä–∞–≤–∏–ª—å–Ω–æ –∑–∞–ø–æ–≤–Ω–µ–Ω—ñ –ø–æ–ª—è");
             }
         }
 
         private void buy_all_Click(object sender, EventArgs e)
         {
-
-            if(final_price > 0)
+            var singleton = Singleton.GetInstance();
+            if (singleton.final_price > 0)
             {
             var form = new Form2();
             form.ShowDialog();
-           // buy();
-       //     basket.Items.Clear();
-                update_list_product();
+                    basket.Items.Clear();
+               update_list_product();
             }
             else
             {
-                MessageBox.Show(" Ó¯ËÍ ÔÛÒÚËÈ");
+                MessageBox.Show("–ö–æ—à–∏–∫ –ø—É—Å—Ç–∏–π");
             }
 
         }
+    }
 
-        public void buy()
+  public  class Singleton
+    {
+
+        public static Singleton _instance = null;
+
+        protected Singleton() { }
+
+        public static Singleton GetInstance()
         {
-
-            using var db = new Context();
-            foreach (var item in db.Products_in_Basket)
+            if (_instance == null)
             {
-
-                var product = db.Products.Find(item.Id);
-                product.Product_Number -= item.Product_Number;
-                db.Update(product);
-                db.SaveChanges();
-                update_list_product();
-
+                _instance = new Singleton();
             }
-            update_list_product();
+            return _instance;
         }
+
+        public int final_price {get;set; }
+
+
 
     }
+
+
+    //–ø–∞—Ç–µ—Ä–Ω —à–∞–±–ª–æ–Ω–∏–π –º–µ—Ç–æ–¥ 
+    class Client_Order
+    {
+        public static void ClientCode(AbstractClass abstractClass)
+        {
+            abstractClass.TemplateMethod();
+        }
+    }
+
+    //—à–∞–±–ª–æ–Ω–∏–π –∫–ª–∞—Å —ñ–∑ –æ–±–æ–≤—è–∑–∫–æ–≤–∏–º–∏ –º–µ—Ç–æ–¥–∞–º–∏ 
+    abstract class AbstractClass
+    {
+        //–º–µ—Ç–æ–¥ –∑ –∞–ª–≥–æ—Ä–∏—Ç–º–æ–º —Ä–æ–±–æ—Ç–∏ –∞–≤—Ç–æ–º–∞—Ç—É –∑ –Ω–∞–ø–æ—è–º–∏
+        public void TemplateMethod()
+        {
+
+            this.step_1();
+            this.step_2();
+            this.step_3();
+            this.step_4();
+
+        }
+        //–∫—Ä–æ–∫ 1
+        protected void step_1()
+        {
+            MessageBox.Show("zamovlennya obroblyayet πsya");
+        }
+        //–∫—Ä–æ–∫ 3
+        protected void step_3()
+        {
+            MessageBox.Show("zamovlennya dostavlyayet πsya");
+        }
+        //–∫—Ä–æ–∫ 4
+        protected void step_4()
+        {
+            MessageBox.Show("ochikuyete zamovlennya");
+        }
+        protected virtual void step_2() { }
+        //–∫—Ä–æ–∫ 2        
+    }
+    //–∫–ª–∞—Å –∑ –æ–±–æ–≤—è–∑–∫–æ–≤–∏–º –º–µ—Ç–æ–¥–æ–º
+    class Work_Drink1 : AbstractClass
+    {
+
+    }
+    //–∫–ª–∞—Å –∑ –æ–±–æ–≤—è–∑–∫–æ–≤–∏–º –º–µ—Ç–æ–¥–æ–º
+    class Work_Drink2 : AbstractClass
+    {
+        protected override void step_2()
+        {
+            MessageBox.Show("kur'yer otrymav zamovlennya");
+        }
+    }
+
+
+
 }

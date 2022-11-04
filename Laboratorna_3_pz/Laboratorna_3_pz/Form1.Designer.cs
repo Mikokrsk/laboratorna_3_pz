@@ -387,8 +387,6 @@
         }
 
         #endregion
-
-        private ListBox list_product;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -420,5 +418,6 @@
         private Label label13;
         private Button buy_all;
         private Button update_product_buy;
+        public ListBox list_product;
     }
 }

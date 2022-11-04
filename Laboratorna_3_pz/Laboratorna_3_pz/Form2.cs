@@ -34,7 +34,10 @@ namespace Laboratorna_3_pz
                         db.Update(product);
                         db.SaveChanges();
                     }
-
+                    if(checkBox1.Checked == false)
+                    Client_Order.ClientCode(new Work_Drink1());
+                    else
+                    Client_Order.ClientCode(new Work_Drink2());
                     MessageBox.Show("Замовлення відправлено");
                     this.Close();
                 }
